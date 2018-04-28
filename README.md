@@ -1,6 +1,6 @@
-# Mosaicode Blocks: Javascript with Web Audio API
+# Mosaicode Blocks: C with OpenGL library
 
-**This repository contains Mosaicode Blocks to generate Javascript Code (Web Audio API).**
+**This repository contains Mosaicode Blocks to generate C Code (OpenGL Library).**
 
 -------------
 
@@ -8,7 +8,7 @@
 
 | | Command |
 | :---: | :---: |
-| *Cloning GitHub:* | `git clone https://github.com/Mosaicode/mosaicode-javascript-webaudio.git`|
+| *Cloning GitHub:* | `git clone https://github.com/andgomes96/mosaicode-c-opengl.git`|
 
 Then procede with instalation:
 ```
