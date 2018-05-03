@@ -27,8 +27,19 @@ mosaicode_lib_c_opengl.egg-info/top_level.txt
 mosaicode_lib_c_opengl/extensions/__init__.py
 mosaicode_lib_c_opengl/extensions/cfile.py
 mosaicode_lib_c_opengl/extensions/blocks/__init__.py
-mosaicode_lib_c_opengl/extensions/blocks/color.py
-mosaicode_lib_c_opengl/extensions/blocks/triangle.py
+mosaicode_lib_c_opengl/extensions/blocks/2D Shapes/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/2D Shapes/circle.py
+mosaicode_lib_c_opengl/extensions/blocks/2D Shapes/elipse.py
+mosaicode_lib_c_opengl/extensions/blocks/2D Shapes/quadrilateral.py
+mosaicode_lib_c_opengl/extensions/blocks/2D Shapes/triangle.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/cone.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/cube.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/dodecahedron.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/sphere.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/torus.py
+mosaicode_lib_c_opengl/extensions/blocks/Operations/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/Operations/rotate.py
 mosaicode_lib_c_opengl/extensions/ports/__init__.py
 mosaicode_lib_c_opengl/extensions/ports/color.py
 mosaicode_lib_c_opengl/extensions/ports/float.py

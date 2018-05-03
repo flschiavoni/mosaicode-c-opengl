@@ -19,15 +19,20 @@ class CFile(CodeTemplate):
         self.language = "c"
         self.description = "A full template to generate opengl code"
         self.extension = ".cpp"
-        self.command = "g++ -Wall -g $dir_name$$filename$$extension$ -o $dir_name$$filename$ -lGL -lGLU -lglut\n"
+        self.command = "g++ -Wall -g $dir_name$$filename$$extension$ -o $dir_name$$filename$ -lGL -lGLU -lglut -lm\n"
         self.command += "$dir_name$./$filename$"
-        self.code_parts = ["function", "declaration", "execution"]
+        self.code_parts = ["global", "function", "call","idle","declaration", "execution"]
         self.code = r"""
-#include <GL/glut.h>
-#include <GL/gl.h>
-#include <GL/glu.h>
+#include <GL/glut.h>    // Header File For The GLUT Library 
+#include <GL/gl.h>  // Header File For The OpenGL32 Library
+#include <GL/glu.h> // Header File For The GLu32 Library
+#include <unistd.h> 
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
+#define ESCAPE 27 //Valor em ASCII do Esc
+int window;
+$code[global]$
 
 typedef struct mosaicgraph_window{
         float x;
@@ -42,87 +47,57 @@ typedef struct mosaicgraph_window{
         char title[128];
         int id;
         void (*process)(void *self);
-} mosaicgraph_window_t;
-
-typedef struct mosaicgraph_coordinate{
-        int len;
-        float *coordinates;
-} mosaicgraph_coordinate_t;
-
-typedef struct mosaicgraph_polygon{
-        int len;
-        float *coordinates;
-        float red;
-        float green;
-        float blue;
-        void (*process)(void *self);
-} mosaicgraph_polygon_t;
-
+}mosaicgraph_window_t;
 mosaicgraph_window_t * mosaicgraph_create_window(float width, float height){
-	mosaicgraph_window_t * window = (mosaicgraph_window_t *) malloc(sizeof(mosaicgraph_window_t));
-	window->fullscreen = 0;
-	window->x = 0;
-	window->y = 0;
-	window->width = width;
-	window->height = height;
-	window->title[0] = '\0';
-	return window;
+    mosaicgraph_window_t * window = (mosaicgraph_window_t *) malloc(sizeof(mosaicgraph_window_t));
+    window->fullscreen = 0;
+    window->x = 0;
+    window->y = 0;
+    window->width = width;
+    window->height = height;
+    window->title[0] = '\0';
+    return window;
 }
 int mosaicgraph_draw_window(mosaicgraph_window_t * window){
     glutInitWindowPosition(window->x, window->y);
     glutInitWindowSize(window->width, window->height);
-	glClearColor(window->red, window->green, window->blue, window->alpha);
-	glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(window->red, window->green, window->blue, window->alpha);
+    glClear(GL_COLOR_BUFFER_BIT);
     window->id = glutCreateWindow(window->title);
     if (window->fullscreen){
-   		glutFullScreen();
+        glutFullScreen();
     }
     glFlush();
-	glutSwapBuffers();
+    glutSwapBuffers();
     return window->id;
 }
-mosaicgraph_polygon_t * mosaicgraph_colored_polygon(mosaicgraph_polygon_t * triangle, float red, float green, float blue){
-    triangle->red = red;
-    triangle->green = green;
-    triangle->blue = blue;
-  	return triangle;
-}
-
-mosaicgraph_polygon_t * mosaicgraph_create_polygon(mosaicgraph_coordinate_t coordinate){
-		mosaicgraph_polygon_t * polygon = (mosaicgraph_polygon_t *) malloc(sizeof(mosaicgraph_polygon_t));
-		float * vector = (float *)malloc(coordinate.len*2*sizeof(float));
-		polygon->len = coordinate.len;
-		for (int i=0;i<coordinate.len*2;i++){
-			vector[i] = coordinate.coordinates[i];
-		}
-		polygon->coordinates = vector;
-		return polygon;
-}
-void mosaicgraph_draw_polygon(mosaicgraph_polygon_t polygon){
-	glColor3f(polygon.red,polygon.green,polygon.blue);
-	glBegin(GL_POLYGON);
-		for(int i =0;i < polygon.len*2;i=i+2){
-			glVertex3f(polygon.coordinates[i],polygon.coordinates[i+1],0.0);
-		}
-
-
-	glEnd();
-}
-
 $single_code[function]$
-
+void display(){
+  glMatrixMode(GL_MODELVIEW);
+  //glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Seta Background
+  glClear(GL_COLOR_BUFFER_BIT);         // Limpa o collor buffer
+  $code[call]$
+  glutSwapBuffers(); 
+  glFlush();
+}
+void idle(){
+    $code[idle]$
+    display();
+}
 int main (int argc, char** argv){
 	glutInit(&argc, argv);
 
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	mosaicgraph_window_t * window1 = mosaicgraph_create_window(500,500);
 	strcpy(window1->title, "Casinha");
         mosaicgraph_draw_window(window1);
 	
 	$code[declaration]$
 
-        $code[execution, connection]$
-
+    $code[execution, connection]$
+    glutDisplayFunc(display);
+    glutIdleFunc(&idle);
     glutSwapBuffers();
     glutMainLoop();
 	return 0;
