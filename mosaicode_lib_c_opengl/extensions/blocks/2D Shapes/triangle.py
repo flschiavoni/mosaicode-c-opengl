@@ -74,7 +74,7 @@ class Triangle(BlockModel):
                             }
                            ]
         self.codes["function"] = """
-       
+
         void mosaicgraph_draw_triangle(float x1, float x2, float x3, float y1, float y2, float y3){
             glColor3f(0.5,0.5,0.5);
             glBegin(GL_POLYGON);

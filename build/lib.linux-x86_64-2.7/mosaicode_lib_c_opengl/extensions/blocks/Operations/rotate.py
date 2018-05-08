@@ -71,6 +71,6 @@ GLfloat xRotated$id$, yRotated$id$, zRotated$id$;
      zRotated$id$ += $prop[z]$;
 """
 
-        self.codes["idle"] = """
+        self.codes["declaration"] = """
     xRotated$id$ = yRotated$id$ = zRotated$id$ = $prop[angle]$;
 """

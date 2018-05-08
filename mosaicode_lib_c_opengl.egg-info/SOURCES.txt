@@ -36,10 +36,17 @@ mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/cone.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/cube.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/dodecahedron.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/icosahedron.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/octahedron.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/sphere.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/teapot.py
+mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/tetrahedron.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/torus.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/rotate.py
+mosaicode_lib_c_opengl/extensions/blocks/Window/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/Window/window.py
 mosaicode_lib_c_opengl/extensions/ports/__init__.py
 mosaicode_lib_c_opengl/extensions/ports/color.py
 mosaicode_lib_c_opengl/extensions/ports/float.py
+mosaicode_lib_c_opengl/extensions/ports/flow.py

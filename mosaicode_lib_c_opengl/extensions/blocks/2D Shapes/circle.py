@@ -18,10 +18,14 @@ class Circle(BlockModel):
         self.label = "Circle"
         self.color = "250:150:150:150"
         self.group = "2D Shapes"
-        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.color",
-                "label":"Color",
+        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                "label":"Flow",
                 "conn_type":"Input",
-                "name":"color"}
+                "name":"flow"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                "label":"Flow",
+                "conn_type":"Output",
+                "name":"flow"}
             ]
 
         self.properties = [{"name": "radius",
@@ -36,11 +40,11 @@ class Circle(BlockModel):
         self.codes["function"] = """
         void mosaicgraph_draw_circle(float radius){
             glColor3f(0.8f,0.2f,0.0);
-            glBegin(GL_POLYGON);       
+            glBegin(GL_POLYGON);
                 for (int i=0; i < 360; i++){
                     float degInRad = i*3.14159/180;
                     glVertex2f(cos(degInRad)*radius,sin(degInRad)*radius);
-                }     
+                }
             glEnd();
         }
 
