@@ -74,9 +74,12 @@ void display(){
   glClear(GL_COLOR_BUFFER_BIT);         // Limpa o collor buffer
   glLoadIdentity();
   $code[call]$
+  glutSwapBuffers();
+  glFlush();
 }
 void idle(){
     $code[idle]$
+    display();
 }
 int main (int argc, char** argv){
 	glutInit(&argc, argv);
@@ -87,9 +90,7 @@ int main (int argc, char** argv){
     strcpy(window->title, "Main Page");
     mosaicgraph_draw_window(window);
     $code[execution, connection]$
-    display();
-    glutSwapBuffers();
-    glFlush();
+    glutDisplayFunc(display);
     glutIdleFunc(&idle);
     glutMainLoop();
 	return 0;

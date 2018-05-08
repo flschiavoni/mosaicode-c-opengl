@@ -18,7 +18,15 @@ class Sphere(BlockModel):
         self.label = "Sphere"
         self.color = "50:150:250:150"
         self.group = "3D Shapes"
-        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.color",
+        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                "label":"Flow",
+                "conn_type":"Input",
+                "name":"flow"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                "label":"Flow",
+                "conn_type":"Output",
+                "name":"flow"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
                 "label":"Color",
                 "conn_type":"Input",
                 "name":"color"}
