@@ -18,7 +18,14 @@ class Rotate(BlockModel):
         self.label = "Rotate"
         self.color = "50:50:50:150"
         self.group = "Operations"
-        self.ports = [
+        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                    "label":"Flow",
+                    "conn_type":"Input",
+                    "name":"flow"},
+                    {"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
+                    "label":"Flow",
+                    "conn_type":"Output",
+                    "name":"flow"}
             ]
 
         self.properties = [{"name": "x",

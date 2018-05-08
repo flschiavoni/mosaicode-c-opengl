@@ -8,7 +8,7 @@
 
 | | Command |
 | :---: | :---: |
-| *Cloning GitHub:* | `git clone https://github.com/andgomes96/mosaicode-c-opengl.git`|
+| *Cloning GitHub:* | `git clone https://github.com/andgomes95/mosaicode-c-opengl.git`|
 
 Then procede with instalation:
 ```
