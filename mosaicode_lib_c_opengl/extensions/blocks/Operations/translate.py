@@ -6,7 +6,7 @@ This module contains the FloatValue class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Rotate(BlockModel):
+class Translate(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -15,8 +15,8 @@ class Rotate(BlockModel):
         self.language = "c"
         self.framework = "opengl"
         self.help = "Not to declare"
-        self.label = "Rotate"
-        self.color = "50:50:50:150"
+        self.label = "Translate"
+        self.color = "50:250:50:100"
         self.group = "Operations"
         self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
                     "label":"Flow",
@@ -30,34 +30,32 @@ class Rotate(BlockModel):
 
         self.properties = [{"name": "x",
                             "label": "x",
-                            "type": MOSAICODE_INT,
-                            "lower": 0,
-                            "upper": 360,
-                            "step": 1,
-                            "value": 30,
+                            "type": MOSAICODE_FLOAT,
+                            "lower": -1.0,
+                            "upper": 1.0,
+                            "step": 0.001,
+                            "value": 0.5,
                             },
                             {"name": "y",
                             "label": "y",
-                            "type": MOSAICODE_INT,
-                            "lower": 0,
-                            "upper": 360,
-                            "step": 1,
-                            "value": 00,
+                            "type": MOSAICODE_FLOAT,
+                            "lower": -1.0,
+                            "upper": 1.0,
+                            "step": 0.001,
+                            "value": 0.00,
                             },
                             {"name": "z",
                             "label": "z",
-                            "type": MOSAICODE_INT,
-                            "lower": 0,
-                            "upper": 360,
-                            "step": 1,
-                            "value": 0,
+                            "type": MOSAICODE_FLOAT,
+                            "lower": -1.0,
+                            "upper": 1.0,
+                            "step": 0.001,
+                            "value": 0.00,
                             }
                            ]
         self.codes["global"] = """
-GLfloat xRotated$id$, yRotated$id$, zRotated$id$;
+GLfloat xTranslate$id$,yTranslate$id$,zTranslate$id$;
 """
         self.codes["call"] = """
-    glRotatef($prop[x]$,1.0,0.0,0.0);
-    glRotatef($prop[y]$,0.0,1.0,0.0);
-    glRotatef($prop[z]$,0.0,0.0,1.0);
+    glTranslatef($prop[x]$,$prop[y]$,$prop[z]$);
 """

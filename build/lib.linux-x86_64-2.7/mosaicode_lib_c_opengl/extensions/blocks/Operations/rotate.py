@@ -30,54 +30,34 @@ class Rotate(BlockModel):
 
         self.properties = [{"name": "x",
                             "label": "x",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": -1.0,
-                            "upper": 1.0,
-                            "step": 0.001,
-                            "value": 0.01,
+                            "type": MOSAICODE_INT,
+                            "lower": 0,
+                            "upper": 360,
+                            "step": 1,
+                            "value": 30,
                             },
                             {"name": "y",
                             "label": "y",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": -1.0,
-                            "upper": 1.0,
-                            "step": 0.001,
-                            "value": 0.01,
+                            "type": MOSAICODE_INT,
+                            "lower": 0,
+                            "upper": 360,
+                            "step": 1,
+                            "value": 00,
                             },
                             {"name": "z",
                             "label": "z",
-                            "type": MOSAICODE_FLOAT,
-                            "lower": -1.0,
-                            "upper": 1.0,
-                            "step": 0.001,
-                            "value": 0.01,
-                            },
-                            {"name": "angle",
-                            "label": "angle",
                             "type": MOSAICODE_INT,
-                            "lower": 1,
-                            "upper": 1000,
+                            "lower": 0,
+                            "upper": 360,
                             "step": 1,
-                            "value": 100,
+                            "value": 0,
                             }
                            ]
         self.codes["global"] = """
 GLfloat xRotated$id$, yRotated$id$, zRotated$id$;
 """
         self.codes["call"] = """
-    glRotatef(xRotated$id$,1.0,0.0,0.0);
-    // rotation about Y axis
-    glRotatef(yRotated$id$,0.0,1.0,0.0);
-    // rotation about Z axis
-    glRotatef(zRotated$id$,0.0,0.0,1.0);
-"""
-
-        self.codes["idle"] = """
-     xRotated$id$ += $prop[x]$;
-     yRotated$id$ += $prop[y]$;
-     zRotated$id$ += $prop[z]$;
-"""
-
-        self.codes["declaration"] = """
-    xRotated$id$ = yRotated$id$ = zRotated$id$ = $prop[angle]$;
+    glRotatef($prop[x]$,1.0,0.0,0.0);
+    glRotatef($prop[y]$,0.0,1.0,0.0);
+    glRotatef($prop[z]$,0.0,0.0,1.0);
 """
