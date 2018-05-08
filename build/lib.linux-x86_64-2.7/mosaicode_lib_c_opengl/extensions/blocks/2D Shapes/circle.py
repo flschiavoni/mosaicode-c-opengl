@@ -25,7 +25,11 @@ class Circle(BlockModel):
                 {"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
                 "label":"Flow",
                 "conn_type":"Output",
-                "name":"flow"}
+                "name":"flow"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
+                "label":"Color",
+                "conn_type":"Input",
+                "name":"color"}
             ]
 
         self.properties = [{"name": "radius",
