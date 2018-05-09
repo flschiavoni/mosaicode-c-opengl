@@ -88,8 +88,8 @@ int main (int argc, char** argv){
 	$code[declaration]$
     mosaicgraph_window_t * window = mosaicgraph_create_window(500,500,0,0);
     strcpy(window->title, "Main Page");
-    mosaicgraph_draw_window(window);
     $code[execution, connection]$
+    mosaicgraph_draw_window(window);
     glutDisplayFunc(display);
     glutIdleFunc(&idle);
     glutMainLoop();

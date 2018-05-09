@@ -49,7 +49,7 @@ mosaicode_lib_c_opengl/extensions/blocks/Operations/rotate.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/scale.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/translate.py
 mosaicode_lib_c_opengl/extensions/blocks/Window/__init__.py
-mosaicode_lib_c_opengl/extensions/blocks/Window/window.py
+mosaicode_lib_c_opengl/extensions/blocks/Window/window_properties.py
 mosaicode_lib_c_opengl/extensions/ports/__init__.py
 mosaicode_lib_c_opengl/extensions/ports/color.py
 mosaicode_lib_c_opengl/extensions/ports/float.py

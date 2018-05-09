@@ -6,7 +6,7 @@ This module contains the Window class.
 from mosaicode.GUI.fieldtypes import *
 from mosaicode.model.blockmodel import BlockModel
 
-class Window(BlockModel):
+class WindowProperties(BlockModel):
 
     # -------------------------------------------------------------------------
     def __init__(self):
@@ -15,23 +15,19 @@ class Window(BlockModel):
         self.language = "c"
         self.framework = "opengl"
         self.help = "Not to declare"
-        self.label = "Window"
+        self.label = "Window Properties"
         self.color = "250:150:150:150"
         self.group = "Window"
-        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
-                "label":"Flow",
-                "conn_type":"Output",
-                "name":"flow"},
-                {"type":"mosaicode_lib_c_opengl.extensions.ports.flow",
-                "label":"Flow",
+        self.ports = [{"type":"mosaicode_lib_c_opengl.extensions.ports.color",
+                "label":"Background",
                 "conn_type":"Input",
-                "name":"flow"}
+                "name":"background"}
             ]
 
         self.properties = [{"name": "x",
                             "label": "x",
                             "type": MOSAICODE_INT,
-                            "lower": 100,
+                            "lower": 0,
                             "upper": 2000,
                             "step": 1,
                             "value": 0,
@@ -39,7 +35,7 @@ class Window(BlockModel):
                             {"name": "y",
                             "label": "y",
                             "type": MOSAICODE_INT,
-                            "lower": 100,
+                            "lower": 0,
                             "upper": 2000,
                             "step": 1,
                             "value": 0,
@@ -66,10 +62,10 @@ class Window(BlockModel):
                             "value": "New Window",
                             }
                            ]
-        self.codes["call"] = """
-        glutSwapBuffers();
-        glFlush();
-        mosaicgraph_window_t * window$id$ = mosaicgraph_create_window($prop[width]$,$prop[height]$,$prop[x]$,$prop[y]$);
-        strcpy(window$id$->title, "$prop[title]$");
-        mosaicgraph_draw_window(window$id$);
+        self.codes["execution"] = """
+        window->x = $prop[x]$;
+        window->y = $prop[y]$;
+        window->width = $prop[width]$;
+        window->height = $prop[height]$;
+        strcpy(window->title, "$prop[title]$");
 """
