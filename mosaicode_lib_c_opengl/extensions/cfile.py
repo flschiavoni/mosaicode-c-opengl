@@ -84,12 +84,12 @@ void idle(){
 int main (int argc, char** argv){
 	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	$code[declaration]$
     mosaicgraph_window_t * window = mosaicgraph_create_window(500,500,0,0);
     strcpy(window->title, "Main Page");
-    $code[execution, connection]$
     mosaicgraph_draw_window(window);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    $code[execution, connection]$
     glutDisplayFunc(display);
     glutIdleFunc(&idle);
     glutMainLoop();

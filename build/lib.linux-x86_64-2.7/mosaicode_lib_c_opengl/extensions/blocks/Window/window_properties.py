@@ -60,7 +60,16 @@ class WindowProperties(BlockModel):
                             "label": "title",
                             "type": MOSAICODE_STRING,
                             "value": "New Window",
+                            },
+                            {"name": "polygon",
+                            "label": "polygon",
+                            "type": MOSAICODE_COMBO,
+                            "values": ["GL_FILL",
+                                        "GL_LINE",
+                                        "GL_POINT"],
+                            "value": "GL_LINE",
                             }
+
                            ]
         self.codes["execution"] = """
         window->x = $prop[x]$;
@@ -68,4 +77,5 @@ class WindowProperties(BlockModel):
         window->width = $prop[width]$;
         window->height = $prop[height]$;
         strcpy(window->title, "$prop[title]$");
+        glPolygonMode(GL_FRONT_AND_BACK, $prop[polygon]$);
 """
