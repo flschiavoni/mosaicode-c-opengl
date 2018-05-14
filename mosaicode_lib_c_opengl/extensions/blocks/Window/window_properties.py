@@ -77,5 +77,7 @@ class WindowProperties(BlockModel):
         window->width = $prop[width]$;
         window->height = $prop[height]$;
         strcpy(window->title, "$prop[title]$");
+"""
+        self.codes["call"] = """
         glPolygonMode(GL_FRONT_AND_BACK, $prop[polygon]$);
 """

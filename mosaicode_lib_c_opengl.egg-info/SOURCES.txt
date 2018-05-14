@@ -46,8 +46,11 @@ mosaicode_lib_c_opengl/extensions/blocks/Operations/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/pop.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/push.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/rotate.py
+mosaicode_lib_c_opengl/extensions/blocks/Operations/rotate_loop.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/scale.py
+mosaicode_lib_c_opengl/extensions/blocks/Operations/scale_loop.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/translate.py
+mosaicode_lib_c_opengl/extensions/blocks/Operations/translate_loop.py
 mosaicode_lib_c_opengl/extensions/blocks/Window/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/Window/window_properties.py
 mosaicode_lib_c_opengl/extensions/ports/__init__.py
