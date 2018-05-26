@@ -51,18 +51,47 @@ class ScaleLoop(BlockModel):
                             "upper": 1.0,
                             "step": 0.001,
                             "value": 0.01,
+                            },
+                            {"name": "tamMax",
+                            "label": "tamMax",
+                            "type": MOSAICODE_FLOAT,
+                            "lower": -1.0,
+                            "upper": 1.0,
+                            "step": 0.001,
+                            "value": 2.0,
+                            },
+                            {"name": "tamMin",
+                            "label": "tamMin",
+                            "type": MOSAICODE_FLOAT,
+                            "lower": -1.0,
+                            "upper": 1.0,
+                            "step": 0.001,
+                            "value": 0.1,
                             }
                            ]
         self.codes["global"] = """
 GLfloat xScale$id$,yScale$id$,zScale$id$;
+GLint signal$id$;
 """
         self.codes["call"] = """
     glScalef(xScale$id$,yScale$id$,zScale$id$);
 """
         self.codes["idle"] = """
-    xScale$id$ += $prop[x]$;
-    yScale$id$ += $prop[y]$;
-    zScale$id$ += $prop[z]$;
+        if(signal$id$ == 0){
+		    xScale$id$ += $prop[x]$;
+		    yScale$id$ += $prop[y]$;
+		    zScale$id$ += $prop[z]$;
+		    if((xScale$id$ > $prop[tamMax]$) || (yScale$id$ > $prop[tamMax]$) || (zScale$id$ > $prop[tamMax]$)){
+		    	signal$id$ = 1;
+		    }
+		}else{
+			xScale$id$ -= $prop[x]$;
+		    yScale$id$ -= $prop[y]$;
+		    zScale$id$ -= $prop[z]$;
+		    if((xScale$id$ < $prop[tamMin]$) || (yScale$id$ < $prop[tamMin]$) || (zScale$id$ < $prop[tamMin]$)){
+		    	signal$id$ = 0;
+		    }
+		}
 """
 
         self.codes["execution"] = """

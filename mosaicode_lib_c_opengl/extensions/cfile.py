@@ -75,7 +75,6 @@ void display(){
   glLoadIdentity();
   $code[call]$
   glutSwapBuffers();
-  glFlush();
 }
 void idle(){
     $code[idle]$
