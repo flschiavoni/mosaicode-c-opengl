@@ -29,7 +29,11 @@ class Teapot(BlockModel):
                 {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
                 "label":"Color",
                 "conn_type":"Input",
-                "name":"color"}
+                "name":"color"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"Float",
+                "conn_type":"Input",
+                "name":"float"}
             ]
 
         self.properties = [{"name": "size",
@@ -38,9 +42,13 @@ class Teapot(BlockModel):
                             "lower": -1.0,
                             "upper": 1.0,
                             "step": 0.01,
-                            "value": 0.5,
+                            "value": 0.1,
                             }
                            ]
+
+        self.codes["global"] = """
+        float float$id$;
+"""
         self.codes["function"] = """
         void mosaicgraph_draw_teapot(float size){
             glColor3f(0.8f,0.2f,0.0);
@@ -49,5 +57,8 @@ class Teapot(BlockModel):
 
 """
         self.codes["call"] = """
-        mosaicgraph_draw_teapot($prop[size]$);
+        mosaicgraph_draw_teapot(float$id$);
+"""
+        self.codes["declaration"] = """
+        float$id$ = $prop[size]$;
 """

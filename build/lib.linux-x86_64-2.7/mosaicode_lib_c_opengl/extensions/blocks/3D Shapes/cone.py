@@ -29,7 +29,15 @@ class Cone(BlockModel):
                 {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
                 "label":"Color",
                 "conn_type":"Input",
-                "name":"color"}
+                "name":"color"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"Base",
+                "conn_type":"Input",
+                "name":"base"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"Height",
+                "conn_type":"Input",
+                "name":"height"}
             ]
 
         self.properties = [{"name": "base",
@@ -65,6 +73,10 @@ class Cone(BlockModel):
                             "value": 100,
                             }
                            ]
+        self.codes["global"] = """
+        float base$id$;
+        float height$id$;
+"""
         self.codes["function"] = """
         void mosaicgraph_draw_cone(float base,float height, int slices, int stacks){
             glColor3f(0.8f,0.2f,0.0);
@@ -73,5 +85,9 @@ class Cone(BlockModel):
 
 """
         self.codes["call"] = """
-        mosaicgraph_draw_cone($prop[base]$,$prop[height]$,$prop[slices]$,$prop[stacks]$);
+        mosaicgraph_draw_cone(base$id$,height$id$,$prop[slices]$,$prop[stacks]$);
+"""
+        self.codes["declaration"] = """
+        base$id$ = $prop[base]$;
+        height$id$ = $prop[height]$;
 """

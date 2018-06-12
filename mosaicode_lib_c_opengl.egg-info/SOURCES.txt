@@ -51,6 +51,8 @@ mosaicode_lib_c_opengl/extensions/blocks/Operations/scale.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/scale_loop.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/translate.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/translate_loop.py
+mosaicode_lib_c_opengl/extensions/blocks/Types/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/Types/float.py
 mosaicode_lib_c_opengl/extensions/blocks/Window/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/Window/window_properties.py
 mosaicode_lib_c_opengl/extensions/ports/__init__.py

@@ -29,7 +29,15 @@ class Torus(BlockModel):
                 {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
                 "label":"Color",
                 "conn_type":"Input",
-                "name":"color"}
+                "name":"color"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"InnerRadius",
+                "conn_type":"Input",
+                "name":"innerradius"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"OuterRadius",
+                "conn_type":"Input",
+                "name":"outerradius"}
             ]
 
         self.properties = [{"name": "innerRadius",
@@ -38,7 +46,7 @@ class Torus(BlockModel):
                             "lower": -1.0,
                             "upper": 1.0,
                             "step": 0.01,
-                            "value": 0.2,
+                            "value": 0.1,
                             },
                             {"name": "outerRadius",
                             "label": "outerRadius",
@@ -46,7 +54,7 @@ class Torus(BlockModel):
                             "lower": -1.0,
                             "upper": 1.0,
                             "step": 0.01,
-                            "value": 0.6,
+                            "value": 0.2,
                             },
                             {"name": "nsides",
                             "label": "nsides",
@@ -65,6 +73,11 @@ class Torus(BlockModel):
                             "value": 10,
                             }
                            ]
+
+        self.codes["global"] = """
+        float innerradius$id$;
+        float outerradius$id$;
+"""
         self.codes["function"] = """
         void mosaicgraph_draw_torus(float innerRadius,float outerRadius, int nsides, int rings){
             glColor3f(0.8f,0.2f,0.0);
@@ -73,5 +86,9 @@ class Torus(BlockModel):
 
 """
         self.codes["call"] = """
-        mosaicgraph_draw_torus($prop[innerRadius]$,$prop[outerRadius]$,$prop[nsides]$,$prop[rings]$);
+        mosaicgraph_draw_torus(innerradius$id$,outerradius$id$,$prop[nsides]$,$prop[rings]$);
+"""
+        self.codes["declaration"] = """
+        innerradius$id$ = $prop[innerRadius]$;
+        outerradius$id$ = $prop[outerRadius]$;
 """

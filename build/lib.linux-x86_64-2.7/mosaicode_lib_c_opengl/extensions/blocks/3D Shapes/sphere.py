@@ -29,7 +29,11 @@ class Sphere(BlockModel):
                 {"type":"mosaicode_lib_c_opengl.extensions.ports.color",
                 "label":"Color",
                 "conn_type":"Input",
-                "name":"color"}
+                "name":"color"},
+                {"type":"mosaicode_lib_c_opengl.extensions.ports.float",
+                "label":"Float",
+                "conn_type":"Input",
+                "name":"float"}
             ]
 
         self.properties = [{"name": "radius",
@@ -38,7 +42,7 @@ class Sphere(BlockModel):
                             "lower": -1.0,
                             "upper": 1.0,
                             "step": 0.01,
-                            "value": 0.5,
+                            "value": 0.1,
                             },
                             {"name": "slices",
                             "label": "slices",
@@ -46,7 +50,7 @@ class Sphere(BlockModel):
                             "lower": 1,
                             "upper": 1000,
                             "step": 1,
-                            "value": 10,
+                            "value": 100,
                             },
                             {"name": "stacks",
                             "label": "stacks",
@@ -54,9 +58,12 @@ class Sphere(BlockModel):
                             "lower": 1,
                             "upper": 1000,
                             "step": 1,
-                            "value": 10,
+                            "value": 100,
                             }
                            ]
+        self.codes["global"] = """
+        float float$id$;
+"""
         self.codes["function"] = """
         void mosaicgraph_draw_sphere(float radius, int slices, int stacks){
             glColor3f(0.8f,0.2f,0.0);
@@ -65,5 +72,8 @@ class Sphere(BlockModel):
 
 """
         self.codes["call"] = """
-        mosaicgraph_draw_sphere($prop[radius]$,$prop[slices]$,$prop[stacks]$);
+        mosaicgraph_draw_sphere(float$id$,$prop[slices]$,$prop[stacks]$);
+"""
+        self.codes["declaration"] = """
+        float$id$ = $prop[radius]$;
 """
