@@ -33,12 +33,14 @@ class Circle(BlockModel):
             ]
 
         self.properties = [{"name": "radius",
-                            "label": "radius",
+                            "label": "Radius",
                             "type": MOSAICODE_FLOAT,
                             "lower": -1.0,
-                            "upper": 1.0,
+                             "upper": 1.0,
                             "step": 0.01,
-                            "value": 0.5,
+                            "page_inc": 0.1,
+                            "page_size": 0.1,
+                            "value": 0.5
                             }
                            ]
         self.codes["function"] = """
