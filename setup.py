@@ -40,9 +40,8 @@ setup(name='mosaicode-lib-c-opengl',
       license="GNU GPL3",
       url='https://mosaicode.github.io/',
 
-      # this is fucked up! must put it in package_data!!
       data_files=[
-            ('/usr/share/mosaicode/extensions/mosaicode_lib_c_opengl/examples', glob("examples/*"))
+            ('/usr/share/mosaicode/extensions/examples/c/opengl', glob("examples/*"))
       ],
       **config
       )
