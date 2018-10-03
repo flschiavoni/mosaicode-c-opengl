@@ -42,6 +42,8 @@ class Sphere(BlockModel):
                             "lower": -1.0,
                             "upper": 1.0,
                             "step": 0.01,
+                            "page_inc": 0.1,
+                            "page_size": 0.1,
                             "value": 0.1,
                             },
                             {"name": "slices",

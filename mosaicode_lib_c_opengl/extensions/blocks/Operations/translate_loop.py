@@ -35,6 +35,8 @@ class TranslateLoop(BlockModel):
                             "upper": 1.0,
                             "step": 0.001,
                             "value": 0.01,
+			    "page_inc": 0.1,
+                            "page_size": 0.1,
                             },
                             {"name": "y",
                             "label": "y",
@@ -43,6 +45,8 @@ class TranslateLoop(BlockModel):
                             "upper": 1.0,
                             "step": 0.001,
                             "value": 0.01,
+			    "page_inc": 0.1,
+                            "page_size": 0.1,
                             },
                             {"name": "z",
                             "label": "z",
@@ -51,6 +55,8 @@ class TranslateLoop(BlockModel):
                             "upper": 1.0,
                             "step": 0.001,
                             "value": 0.01,
+			    "page_inc": 0.1,
+                            "page_size": 0.1,
                             }
                            ]
         self.codes["global"] = """
