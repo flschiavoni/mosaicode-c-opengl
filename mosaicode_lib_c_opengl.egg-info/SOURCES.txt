@@ -26,6 +26,8 @@ mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/sphere.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/teapot.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/tetrahedron.py
 mosaicode_lib_c_opengl/extensions/blocks/3D Shapes/torus.py
+mosaicode_lib_c_opengl/extensions/blocks/IO/__init__.py
+mosaicode_lib_c_opengl/extensions/blocks/IO/keyboard.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/__init__.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/pop.py
 mosaicode_lib_c_opengl/extensions/blocks/Operations/push.py

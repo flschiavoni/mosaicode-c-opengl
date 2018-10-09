@@ -29,6 +29,7 @@ class CFile(CodeTemplate):
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #define ESCAPE 27 //Valor em ASCII do Esc
 int window;
@@ -73,7 +74,7 @@ void display(){
   glMatrixMode(GL_MODELVIEW);
   glClear(GL_COLOR_BUFFER_BIT);         // Limpa o collor buffer
   glLoadIdentity();
-  $code[call]$
+  $code[call, connection]$
   glutSwapBuffers();
 }
 void idle(){
@@ -83,12 +84,12 @@ void idle(){
 int main (int argc, char** argv){
 	glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH);
-	$code[declaration]$
     mosaicgraph_window_t * window = mosaicgraph_create_window(500,500,0,0);
+	$code[declaration]$
     strcpy(window->title, "Main Page");
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    $code[execution, connection]$
     mosaicgraph_draw_window(window);
+    $code[execution]$
     glutDisplayFunc(display);
     glutIdleFunc(&idle);
     glutMainLoop();
