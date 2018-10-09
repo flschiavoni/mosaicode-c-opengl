@@ -89,7 +89,7 @@ int main (int argc, char** argv){
     strcpy(window->title, "Main Page");
     //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     mosaicgraph_draw_window(window);
-    $code[execution]$
+    $single_code[execution]$
     glutDisplayFunc(display);
     glutIdleFunc(&idle);
     glutMainLoop();
