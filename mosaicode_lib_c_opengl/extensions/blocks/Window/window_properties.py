@@ -71,7 +71,7 @@ class WindowProperties(BlockModel):
                             }
 
                            ]
-        self.codes["execution"] = """
+        self.codes["declaration"] = """
         window->x = $prop[x]$;
         window->y = $prop[y]$;
         window->width = $prop[width]$;

@@ -34,7 +34,7 @@ class Dodecahedron(BlockModel):
 
         self.codes["function"] = """
         void mosaicgraph_draw_dodecahedron(){
-            glColor3f(0.8f,0.2f,0.0);
+            glColor3f(0.2f,0.2f,0.2);
             glutSolidDodecahedron();
         }
 

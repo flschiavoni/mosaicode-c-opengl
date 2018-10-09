@@ -34,7 +34,7 @@ class Octahedron(BlockModel):
 
         self.codes["function"] = """
         void mosaicgraph_draw_octahedron(){
-            glColor3f(0.8f,0.2f,0.0);
+            glColor3f(0.8f,0.2f,0.5f);
             glutSolidOctahedron();
         }
 

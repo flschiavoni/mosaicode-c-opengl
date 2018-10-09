@@ -34,7 +34,7 @@ class Icosahedron(BlockModel):
 
         self.codes["function"] = """
         void mosaicgraph_draw_icosahedron(){
-            glColor3f(0.8f,0.2f,0.0);
+            glColor3f(0.8f,0.8f,0.0);
             glutSolidIcosahedron();
         }
 

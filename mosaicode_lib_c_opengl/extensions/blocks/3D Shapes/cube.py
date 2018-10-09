@@ -39,9 +39,11 @@ class Cube(BlockModel):
         self.properties = [{"name": "size",
                             "label": "size",
                             "type": MOSAICODE_FLOAT,
-                            "lower": -1.0,
-                            "upper": 1.0,
+                            "lower": 0.01,
+                            "upper": 2.0,
                             "step": 0.01,
+                            "page_inc": 0.01,
+                            "page_size": 0.01,
                             "value": 0.1,
                             }
                            ]
